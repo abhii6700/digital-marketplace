@@ -21,7 +21,7 @@ export const Media: CollectionConfig = {
   hooks: {
     beforeChange: [
       ({ req, data }) => {
-        return { data, user: req.user.id };
+        return { ...data, user: req.user.id };
       },
     ],
   },
@@ -42,8 +42,8 @@ export const Media: CollectionConfig = {
     hidden: ({ user }) => user.role !== 'admin',
   },
   upload: {
-    staticDir: 'media',
     staticURL: '/media',
+    staticDir: 'media',
     imageSizes: [
       {
         name: 'thumbnail',
